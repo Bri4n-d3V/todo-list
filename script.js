@@ -2,6 +2,7 @@ const obj = {
   input: document.querySelector('#texto-tarefa'),
   button: document.querySelector('#criar-tarefa'),
   ol: document.querySelector('ol'),
+  button2: document.querySelector('#apaga-tudo')
 }
 
 // Adiciona texto do input à uma lista pelo botão.
@@ -15,6 +16,7 @@ obj.button.addEventListener('click', () => {
 
   obj.task = document.querySelectorAll('.task');
   obj.ol = document.querySelector('ol');
+  obj.li = document.createElement('li');
 })
 
 // Poem fundo cinza ao clicar no item da lista.
@@ -28,11 +30,19 @@ document.addEventListener('click', event => {
   }
 })
 
-// //Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+//Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
 document.addEventListener('dblclick', event => {
   if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
   } else if (event.target.classList.contains('task')) {
     event.target.classList.add('completed');
+  }
+})
+
+// Remove itens da lista
+obj.button2.addEventListener('click', () => {
+  let ol = document.querySelector('ol');
+  while (ol.firstChild) {
+    ol.firstChild.remove()
   }
 })
