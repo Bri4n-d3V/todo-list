@@ -2,9 +2,6 @@ const obj = {
   input: document.querySelector('#texto-tarefa'),
   button: document.querySelector('#criar-tarefa'),
   ol: document.querySelector('ol'),
-  li: document.querySelector('li'),
-  task: document.querySelectorAll('.task'),
-  selected: document.querySelector('#selected')
 }
 
 // Adiciona texto do input à uma lista pelo botão.
@@ -28,5 +25,14 @@ document.addEventListener('click', event => {
     }
     event.target.id = 'selected';
     obj.selected = document.querySelector('#selected');
+  }
+})
+
+// //Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+document.addEventListener('dblclick', event => {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else if (event.target.classList.contains('task')) {
+    event.target.classList.add('completed');
   }
 })
