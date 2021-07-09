@@ -2,7 +2,8 @@ const obj = {
   input: document.querySelector('#texto-tarefa'),
   button: document.querySelector('#criar-tarefa'),
   ol: document.querySelector('ol'),
-  button2: document.querySelector('#apaga-tudo')
+  button2: document.querySelector('#apaga-tudo'),
+  button3: document.querySelector("#remover-finalizados")
 }
 
 // Adiciona texto do input à uma lista pelo botão.
@@ -16,7 +17,7 @@ obj.button.addEventListener('click', () => {
 
   obj.task = document.querySelectorAll('.task');
   obj.ol = document.querySelector('ol');
-  obj.li = document.createElement('li');
+  obj.li = document.querySelectorAll('li');
 })
 
 // Poem fundo cinza ao clicar no item da lista.
@@ -41,8 +42,13 @@ document.addEventListener('dblclick', event => {
 
 // Remove itens da lista
 obj.button2.addEventListener('click', () => {
-  let ol = document.querySelector('ol');
-  while (ol.firstChild) {
-    ol.firstChild.remove()
+  obj.ol.innerHTML = '';
+})
+
+// Remover finalizados
+obj.button3.addEventListener('click', () => {
+  let completed = document.querySelectorAll('.completed');
+  for (let i = 0; i < completed.length; i += 1) {
+    completed[i].parentNode.removeChild(completed[i]);
   }
 })
