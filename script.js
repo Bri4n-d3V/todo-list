@@ -3,7 +3,8 @@ const obj = {
   button: document.querySelector('#criar-tarefa'),
   ol: document.querySelector('ol'),
   button2: document.querySelector('#apaga-tudo'),
-  button3: document.querySelector("#remover-finalizados")
+  button3: document.querySelector('#remover-finalizados'),
+  button4: document.querySelector('#salvar-tarefas')
 }
 
 // Adiciona texto do input à uma lista pelo botão.
@@ -52,3 +53,10 @@ obj.button3.addEventListener('click', () => {
     completed[i].parentNode.removeChild(completed[i]);
   }
 })
+
+// Salvar Tarefas
+obj.button4.addEventListener('click', () => {
+  localStorage.setItem('listItems', obj.ol.innerHTML);
+});
+let savedItems = localStorage.getItem('listItems');
+obj.ol.innerHTML = savedItems;
