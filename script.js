@@ -5,7 +5,9 @@ const obj = {
   button2: document.querySelector('#apaga-tudo'),
   button3: document.querySelector('#remover-finalizados'),
   button4: document.querySelector('#salvar-tarefas'),
-  button5: document.querySelector('#remover-selecionado')
+  button5: document.querySelector('#remover-selecionado'),
+  button6: document.querySelector('#mover-cima'),
+  button7: document.querySelector('#mover-baixo'),
 }
 
 // Adiciona texto do input à uma lista pelo botão.
@@ -66,5 +68,25 @@ obj.ol.innerHTML = savedItems;
 // Remover Selecionado
 obj.button5.addEventListener('click', () => {
   let selected = document.querySelector('#selected');
-    selected.parentNode.removeChild(selected);
+  selected.parentNode.removeChild(selected);
 });
+
+// Mover pra Cima
+obj.button6.addEventListener('click', () => {
+  let ol = document.querySelector('ol');
+  let selected = document.querySelector('#selected');
+
+  if (selected && selected.previousSibling) {
+    ol.insertBefore(selected, selected.previousSibling);
+  }
+})
+
+// Mover pra Baixo
+obj.button7.addEventListener('click', () => {
+  let ol = document.querySelector('ol');
+  let selected = document.querySelector('#selected');
+
+  if (selected && selected.nextSibling) {
+    ol.insertBefore(selected.nextSibling, selected);
+  }
+})
