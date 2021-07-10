@@ -4,7 +4,8 @@ const obj = {
   ol: document.querySelector('ol'),
   button2: document.querySelector('#apaga-tudo'),
   button3: document.querySelector('#remover-finalizados'),
-  button4: document.querySelector('#salvar-tarefas')
+  button4: document.querySelector('#salvar-tarefas'),
+  button5: document.querySelector('#remover-selecionado')
 }
 
 // Adiciona texto do input à uma lista pelo botão.
@@ -23,6 +24,7 @@ obj.button.addEventListener('click', () => {
 
 // Poem fundo cinza ao clicar no item da lista.
 document.addEventListener('click', event => {
+  obj.task = document.querySelectorAll('.task');
   if (event.target.classList.contains('task')) {
     for (let i = 0; i < obj.task.length; i += 1) {
       obj.task[i].id = '';
@@ -60,3 +62,9 @@ obj.button4.addEventListener('click', () => {
 });
 let savedItems = localStorage.getItem('listItems');
 obj.ol.innerHTML = savedItems;
+
+// Remover Selecionado
+obj.button5.addEventListener('click', () => {
+  let selected = document.querySelector('#selected');
+    selected.parentNode.removeChild(selected);
+});
